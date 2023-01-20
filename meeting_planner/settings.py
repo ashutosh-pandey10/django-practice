@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website', # Add the additional apps created by manage.py of project main package ie. package having same name as the parent
+    'website',
+    'meetings', # Add the additional apps created by manage.py of project main package ie. package having same name as the parent
 ]
 
 MIDDLEWARE = [
