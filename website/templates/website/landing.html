@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1> Welcome to my meeting planner website </h1>
+        <p>
+            I am {{name}} and I develop nice, minimalist python backends for Infineon.. Check out my Linkedin profile <a href={{profile_link}}>here</a>!
+        </p>
+
+
+        <h1> Meetings </h1>
+        <ul>
+            {% for meeting in meetings %}
+                <li> 
+                    {% comment %} The below statement is written in such mannerism to avoid failing of application when the urls are changed.
+                                  When workning in a project with 100s of url mappings it gets hard to keep track of the same if they're hardcoded
+                                  This little tweak simply maps to the view, whose name is defined as "fetch_details" in the settings.py file.
+                                  
+                                  The meeting.id is just the argument passed to the url, coming from "fetch_details". 
+                    {% endcomment %}
+                    <p> <a href="{% url 'fetch_details' meeting.id %}">{{meeting.title}}</a>
+                    </p>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+        <h3> <a href="{% url "rooms" %}">Room's list </h3>
+
+        <script src="" async defer></script>
+    </body>
+</html>
