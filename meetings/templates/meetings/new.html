@@ -18,10 +18,13 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <form>
+        <form method="post">
             <table>
                 {{ form }}
             </table>
+            {% csrf_token %} 
+            {% comment %} required in every django form {% endcomment %}
+            <button type="submit">Create</button>
         </form>
         
         <script src="" async defer></script>

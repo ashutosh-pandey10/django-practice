@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.forms import modelform_factory   
 from meetings.models import Meeting, Room
 
@@ -18,5 +18,11 @@ def room_list(request):
 MeetingForm = modelform_factory(Meeting, exclude=[])
 
 def new(request):
-    form = MeetingForm()
+    if(request.method == "POST"):
+        form = MeetingForm(request.POST)
+        if(form.is_valid()):
+            form.save()
+            return redirect("index_page")
+    else:
+        form = MeetingForm()
     return render(request, 'meetings/new.html', {'form':form})
